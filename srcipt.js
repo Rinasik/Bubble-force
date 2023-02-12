@@ -119,42 +119,41 @@ const mouseDot = new MouseDot();
 const dots = [mouseDot];
 
 const updateDots = (ctx) => {
-  for (let i = 0; i < dots.length; i++) {
-    if (dots[i].isMouse) {
-      continue;
+  dots.map((currentDot, currIndex) => {
+    if (currentDot.isMouse) {
+      return;
     }
+    let acc = new XoY({ x: 0, y: 0 });
 
-    let acc = { x: 0, y: 0 };
-
-    for (let j = 0; j < dots.length; j++) {
-      if (i == j) {
-        continue;
+    dots.map((calcDot, index) => {
+      if (currIndex === index) {
+        return;
       }
-
-      let [a, b] = [dots[i], dots[j]];
-
-      const delta = new XoY({ x: b.pos.x - a.pos.x, y: b.pos.y - a.pos.y });
+      const delta = new XoY({
+        x: calcDot.pos.x - currentDot.pos.x,
+        y: calcDot.pos.y - currentDot.pos.y,
+      });
       const dist = Math.sqrt(delta.x * delta.x + delta.y * delta.y) || 1;
 
-      let force = ((dist - sphereRad) / dist) * b.mass;
+      let force = ((dist - sphereRad) / dist) * calcDot.mass;
 
-      if (dots[j].isMouse) {
-        const sumOfRadius = a.radius + b.radius;
+      if (calcDot.isMouse) {
+        const sumOfRadius = currentDot.radius + calcDot.radius;
 
         if (dist > sumOfRadius + smallSphere) {
-          force = b.mass / dist;
+          force = calcDot.mass / dist;
         } else {
-          force = ((dist - sumOfRadius) / dist) * b.mass;
+          force = ((dist - sumOfRadius) / dist) * calcDot.mass;
         }
       }
 
       acc.x += delta.x * force;
       acc.y += delta.y * force;
-    }
+    });
 
-    dots[i].vel.x = dots[i].vel.x * smooth + acc.x;
-    dots[i].vel.y = dots[i].vel.y * smooth + acc.y;
-  }
+    currentDot.vel.x = currentDot.vel.x * smooth + acc.x;
+    currentDot.vel.y = currentDot.vel.y * smooth + acc.y;
+  });
 
   dots.map((dot) => dot.draw(ctx));
 };
