@@ -109,7 +109,7 @@ const ctx = canvas.getContext("2d");
 const hPadding = 10;
 const wPadding = 20;
 
-const sphereRad = 200;
+const sphereRad = 250;
 const smallSphere = 10;
 const smooth = 0.85;
 
@@ -135,15 +135,15 @@ const updateDots = (ctx) => {
       });
       const dist = Math.sqrt(delta.x * delta.x + delta.y * delta.y) || 1;
 
-      let force = ((dist - sphereRad) / dist) * calcDot.mass;
+      let force = ((dist - sphereRad) / dist) * calcDot.mass * currentDot.mass;
 
       if (calcDot.isMouse) {
         const sumOfRadius = currentDot.radius + calcDot.radius;
 
-        if (dist > sumOfRadius + smallSphere) {
+        if (dist > sumOfRadius + 2 * smallSphere) {
           force = calcDot.mass / dist;
         } else {
-          force = ((dist - sumOfRadius) / dist) * calcDot.mass;
+          force = ((dist - sumOfRadius - smallSphere) / dist) * calcDot.mass;
         }
       }
 
