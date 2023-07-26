@@ -104,10 +104,13 @@ class Dot {
 }
 
 const canvas = document.createElement("canvas");
+
 const ctx = canvas.getContext("2d");
 
 const hPadding = 10;
 const wPadding = 20;
+document.body.style.backgroundColor = "#383838";
+document.body.style.padding = `${hPadding}px ${wPadding}px`;
 
 const sphereRad = 250;
 const smallSphere = 10;
