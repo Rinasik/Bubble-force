@@ -8,18 +8,22 @@
     <title>Games</title>
   </head>
   <body>
-    <select id="game">
-      <option value="-1">--</option>
-      <option value="scripts/long-shadow.js">Long-shadow</option>
-      <option value="scripts/bubbles.js">Bubbles</option>
-      <option value="scripts/black-hole.js">Black-hole</option>
-    </select>
+    <div id="root">
+      <div id="title">Choose the game</div>
+      <select id="game">
+        <option value="-1">--</option>
+        <option value="scripts/long-shadow.js">Long-shadow</option>
+        <option value="scripts/bubbles.js">Bubbles</option>
+        <option value="scripts/black-hole.js">Black-hole</option>
+      </select>
+  </div>
 
     <script>
       const select = document.getElementById('game');
+      const root = document.getElementById('root');
       
       select.addEventListener('change',(e)=> {
-        document.body.removeChild(select);
+        document.body.removeChild(root);
 
         const script = document.createElement('script');
 
