@@ -80,10 +80,9 @@ class Dot {
     ctx.fillStyle = `rgba(${this.color}, ${this.alpha})`;
 
     const size =
-      Math.sin(
-        ((this.angle * Math.cos(parallaxedInclination) + Math.PI / 2) / 2) %
-          Math.PI
-      ) * this.radius;
+      Math.sin(((this.angle + Math.PI / 2) / 2) % Math.PI) *
+      Math.cos(parallaxedInclination % (Math.PI / 2)) *
+      this.radius;
     ctx.arc(x, y, size, 0, 2 * Math.PI);
     ctx.fill();
   }
