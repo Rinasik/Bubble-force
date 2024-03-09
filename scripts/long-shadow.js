@@ -3,7 +3,7 @@ canvas.style.backgroundColor = "#30303f";
 
 const ctx = canvas.getContext("2d");
 
-const colors = ["#00b3ff", "#e9692c", "#ee35a5"];
+const colors = ["#00b3ff", "#e9692c", "#F31260"];
 
 class Torch {
   constructor(canvas) {
