@@ -18,7 +18,7 @@ const DOT_END_G = 0;
 const DOT_END_B = 65;
 
 const DOT_END = `${DOT_END_R}, ${DOT_END_G}, ${DOT_END_B}`;
-const TRAIL_LENGTH = 30;
+const TRAIL_LENGTH = 40;
 const TRAIL_FACTOR = 10;
 
 const TRAIL_DIVISION = TRAIL_LENGTH / TRAIL_FACTOR;
@@ -44,10 +44,8 @@ class Dot {
 
       const prepared_index = index / TRAIL_DIVISION;
 
-      ctx.beginPath();
       ctx.fillStyle = `rgba(${dotsColor[prepared_index]}, ${dotsAplha[prepared_index]})`;
-      ctx.arc(x, y, 1, 0, 2 * Math.PI);
-      ctx.fill();
+      ctx.fillRect(x, y, 2, 2);
     });
 
     ctx.beginPath();
