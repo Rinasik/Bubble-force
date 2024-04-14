@@ -50,8 +50,7 @@ class Dot {
 
     ctx.beginPath();
     ctx.fillStyle = `rgba(${DOT_START}, 1)`;
-    ctx.arc(this.x, this.y, 2, 0, 2 * Math.PI);
-    ctx.fill();
+    ctx.fillRect(this.x, this.y, 3, 3);
   }
 
   UpdateVelocity() {
@@ -105,7 +104,6 @@ function initDots(width, height) {
 
     dotsColor.push(`${r}, ${g}, ${b}`);
   }
-  console.log(dotsColor);
 }
 
 function drawFrame() {
