@@ -1,7 +1,7 @@
 const canvas = document.createElement("canvas");
 canvas.style.backgroundColor = "#230041";
 
-const ALPHA = 0.009;
+const ALPHA = 0.012;
 
 const NET_FREQUENCY_X = 60;
 const NET_FREQUENCY_Y = 30;
